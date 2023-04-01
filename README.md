@@ -1,2 +1,0 @@
-# animationwebsite
-Created with CodeSandbox
