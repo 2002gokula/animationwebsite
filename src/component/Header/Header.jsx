@@ -32,7 +32,7 @@ const Header = () => {
             <div id="line-2" />
           </div>
           {MenuOpen && (
-            <div className="TopNavMenu-popup">
+            <div className="TopNavMenu-popup z-[999999]">
               <div className="TopNavMenu-popup-content-wrapper">
                 <button className="TopNavMenu-logo">
                   <svg

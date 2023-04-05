@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
+import React, { useEffect, useRef, useState } from "react"
+import AOS from "aos"
+import "aos/dist/aos.css"
+AOS.init()
 const Hero = () => {
   const [DetailsOpen, setDetailsOpen] = useState("1")
-  const [SubDetailsOpen, setsubDetailsOpen] = useState("1")
+  const [DetailsOpen1, setDetailsOpen1] = useState("1")
+  const [DetailsOpen2, setDetailsOpen2] = useState("1")
+  const [DetailsOpen3, setDetailsOpen3] = useState("1")
+  const [SubDetailsOpen, setsubDetailsOpen] = useState()
   const SubDetailsData = [
     {
       Title: "Social Media",
@@ -71,7 +75,16 @@ const Hero = () => {
       clearInterval(intervalId)
     }
   }, [])
-  console.log(number)
+  const videoRef = useRef(null)
+
+  const handleVideoClick = () => {
+    if (videoRef.current.paused) {
+      videoRef.current.play()
+    } else {
+      videoRef.current.pause()
+    }
+  }
+
   return (
     <div className="Content-body">
       <main className="Section Index">
@@ -86,20 +99,16 @@ const Hero = () => {
               data-scroll-offset={0}
               style={{ color: "#000" }}
             >
-              <div className="VideoHead-header-desktop">
+              <div data-aos="fade-up" className=" ">
                 <span data-index={1}>WRAPPED is een Media Agency</span>
                 <span data-index={2}>
                   die jou social-media kan{" "}
                   <span className="subtitle">one-uppen.</span>
                 </span>
               </div>
-              <div className="VideoHead-header-mobile">
-                <span data-index={1}>Clay is a UI/UX design</span>
-                <span data-index={2}>and branding agency</span>
-                <span data-index={3}> in San Francisco.</span>
-              </div>
             </h1>
             <div
+              data-aos="fade-up"
               className="VideoHead-reel show shown"
               data-scroll=""
               data-scroll-offset={0}
@@ -108,13 +117,16 @@ const Hero = () => {
             >
               <div className="VideoHead-reel-wrapper">
                 <div className="VideoHead-reel-inner">
-                  <video controls={false} loop autoPlay muted>
+                  <video controls={false} ref={videoRef} loop autoPlay muted>
                     <source src="/herovideo.mp4" type="video/mp4" />
                     <source src="/herovideo.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                   <div className="VideoHead-reel-overlay" />
-                  <div className="VideoHead-reel-innerPlay">
+                  <div
+                    onClick={handleVideoClick}
+                    className="VideoHead-reel-innerPlay"
+                  >
                     <svg
                       className="VideoHead-reel-innerPlay-light"
                       viewBox="0 0 202 202"
@@ -203,6 +215,7 @@ const Hero = () => {
           </section>
           <section className="IndexDescription" data-theme="light">
             <h2
+              data-aos="fade-up"
               className="IndexDescription-text"
               data-scroll=""
               data-scroll-offset={50}
@@ -231,6 +244,7 @@ const Hero = () => {
               </div>
             </h2>
             <div
+              data-aos="fade-up"
               className="IndexDescription-items"
               data-scroll=""
               data-scroll-offset={50}
@@ -238,7 +252,9 @@ const Hero = () => {
               {SubDetailsData.map((value, index) => (
                 <div className="IndexDescription-item">
                   <div
-                    onClick={() => setsubDetailsOpen(index)}
+                    onClick={() =>
+                      setsubDetailsOpen(SubDetailsOpen === index ? null : index)
+                    }
                     className="IndexDescription-item-title"
                     style={{
                       willChange: "opacity, transform",
@@ -252,139 +268,12 @@ const Hero = () => {
                   {SubDetailsOpen === index && (
                     <div className="IndexDescription-item-wrapper">
                       <div className="IndexDescription-item-text">
-                        <p>{value.subTitle}</p>
+                        <p data-aos="fade-down">{value.subTitle}</p>
                       </div>
                     </div>
                   )}
                 </div>
               ))}
-              {/* <div className="IndexDescription-item">
-                <div
-                  className="IndexDescription-item-title"
-                  style={{
-                    willChange: "opacity, transform",
-                    opacity: "1",
-                    transform: "matrix(1, 0, 0, 1, 0, 30)",
-                  }}
-                >
-                  Branding
-                  <em />
-                </div>
-                <div className="IndexDescription-item-wrapper">
-                  <div className="IndexDescription-item-text">
-                    <p>
-                      A brand today is all about how it makes your customers
-                      feel. It's not a logo, visual identity, or digital product
-                      design. but rather a cohesive system that spans across all
-                      mediums and touchpoints. We're a branding agency offering
-                      a complete solution from naming and logo design to
-                      communications and style guides.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="IndexDescription-item">
-                <div
-                  className="IndexDescription-item-title"
-                  style={{
-                    willChange: "opacity, transform",
-                    opacity: "1",
-                    transform: "matrix(1, 0, 0, 1, 0, 30)",
-                  }}
-                >
-                  User Experience
-                  <em />
-                </div>
-                <div className="IndexDescription-item-wrapper">
-                  <div className="IndexDescription-item-text">
-                    <p>
-                      UI/UX design is a defining factor for any digital product
-                      these days. We're a user experience and UI design agency
-                      focused on improving conversion and increasing customer
-                      engagement. Our UI/UX design capabilities don't stop at
-                      mobile apps, web applications, or multi‑platform digital
-                      experiences. As a UX design agency, we create products and
-                      services that provide outstanding usability while fully
-                      embracing your brand's personality.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="IndexDescription-item">
-                <div
-                  className="IndexDescription-item-title"
-                  style={{
-                    willChange: "opacity, transform",
-                    opacity: "1",
-                    transform: "matrix(1, 0, 0, 1, 0, 30)",
-                  }}
-                >
-                  Development
-                  <em />
-                </div>
-                <div className="IndexDescription-item-wrapper">
-                  <div className="IndexDescription-item-text">
-                    <p>
-                      Our full‑stack design and development agency based in San
-                      Francisco provides front‑end and back‑end development
-                      services working closely with our designers. As a UX UI
-                      and app development company, we build native mobile apps
-                      for iOS and Android, web applications, apps for wearables,
-                      and B2B/enterprise software.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="IndexDescription-item">
-                <div
-                  className="IndexDescription-item-title"
-                  style={{
-                    willChange: "opacity, transform",
-                    opacity: "1",
-                    transform: "matrix(1, 0, 0, 1, 0, 30)",
-                  }}
-                >
-                  Web Design
-                  <em />
-                </div>
-                <div className="IndexDescription-item-wrapper">
-                  <div className="IndexDescription-item-text">
-                    <p>
-                      We're a web design agency creating next‑level websites by
-                      strategically blending user experience and brand
-                      storytelling. Our web designers and developers create
-                      responsive websites that feel at home on any device.
-                      Product landing pages, marketing sites, or UX UI for
-                      company intranet portals – we do it all.
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-              <div className="IndexDescription-item">
-                <div
-                  className="IndexDescription-item-title"
-                  style={{
-                    willChange: "opacity, transform",
-                    opacity: "1",
-                    transform: "matrix(1, 0, 0, 1, 0, 30)",
-                  }}
-                >
-                  Enterprise UX
-                  <em />
-                </div>
-                <div className="IndexDescription-item-wrapper">
-                  <div className="IndexDescription-item-text">
-                    <p>
-                      We're a UI/UX design agency that believes business
-                      software deserves the user‑friendliness and aesthetics of
-                      best‑in‑class consumer apps. We're a digital agency that
-                      transforms legacy enterprise platforms into delightful,
-                      consumer‑grade experiences and design new B2B products
-                      that people love using.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
           {/* <section className="IndexLogos" data-theme="light">
@@ -1141,6 +1030,7 @@ const Hero = () => {
           <section className="ProjectsList" data-theme="light">
             <div className="ProjectsList-wrapper">
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={0}
                 data-shape="rect"
@@ -1243,6 +1133,7 @@ const Hero = () => {
                 </a>{" "}
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={1}
                 data-shape="square"
@@ -1344,6 +1235,7 @@ const Hero = () => {
                 </a>{" "}
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={0}
                 data-shape="square"
@@ -1443,6 +1335,7 @@ const Hero = () => {
                 </a>{" "}
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={1}
                 data-shape="rect"
@@ -1547,6 +1440,7 @@ const Hero = () => {
                 </a>{" "}
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={0}
                 data-shape="rect"
@@ -1645,6 +1539,7 @@ const Hero = () => {
                 </div>
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={1}
                 data-shape="square"
@@ -1747,6 +1642,7 @@ const Hero = () => {
                 </a>{" "}
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={0}
                 data-shape="square"
@@ -1859,6 +1755,7 @@ const Hero = () => {
                 </a>{" "}
               </div>
               <div
+                data-aos="fade-up"
                 className="ProjectsItem"
                 data-order={1}
                 data-shape="rect"
@@ -1972,6 +1869,7 @@ const Hero = () => {
                   <div className="IndexAbout-text-wrapper">
                     <div>
                       <p
+                        data-aos="fade-up"
                         className="IndexAbout-text"
                         data-scroll=""
                         data-scroll-offset={50}
@@ -1986,6 +1884,7 @@ const Hero = () => {
                     </div>
                     <div className="IndexAbout-numbers-wrapper">
                       <div
+                        data-aos="fade-up"
                         className="IndexAbout-numbers number--32"
                         data-scroll=""
                         data-scroll-offset={50}
@@ -2006,6 +1905,7 @@ const Hero = () => {
                         </span>
                       </div>
                       <div
+                        data-aos="fade-up"
                         className="IndexAbout-numbers"
                         data-scroll=""
                         data-scroll-offset={50}
@@ -2341,7 +2241,7 @@ const Hero = () => {
                   Social Media Nieuws
                 </p>
               </div>
-              <ul>
+              <ul data-aos="fade-up">
                 <li data-scroll="" data-scroll-offset={50}>
                   <div className="IndexNews-date">
                     <span
@@ -2467,6 +2367,7 @@ const Hero = () => {
               </h2>
               {DetailsData.map((value, index) => (
                 <div
+                  data-aos="fade-up"
                   key={index}
                   className="IndexFaq-items"
                   data-scroll=""
@@ -2479,7 +2380,9 @@ const Hero = () => {
                     itemType="https://schema.org/Question"
                   >
                     <div
-                      onClick={() => setDetailsOpen(index)}
+                      onClick={() =>
+                        setDetailsOpen(DetailsOpen === index ? null : index)
+                      }
                       className="IndexFaq-item-title -active"
                       itemProp="name"
                       style={{
@@ -2493,7 +2396,7 @@ const Hero = () => {
                     </div>
                     {DetailsOpen === index && (
                       <div
-                        className="IndexFaq-item-wrapper"
+                        className="IndexFaq-item-wrapper open"
                         style={{
                           height: "auto",
                           display: "block",
@@ -2508,7 +2411,9 @@ const Hero = () => {
                           itemScope=""
                           itemType="https://schema.org/Answer"
                         >
-                          <p itemProp="text">{value.subTitle}</p>
+                          <p data-aos="fade-down" itemProp="text">
+                            {value.subTitle}
+                          </p>
                         </div>
                       </div>
                     )}
