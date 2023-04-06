@@ -32,7 +32,7 @@ const Header = () => {
             <div id="line-2" />
           </div>
           {MenuOpen && (
-            <div className="TopNavMenu-popup z-[999999]">
+            <div data-aos="zoom-in" className="TopNavMenu-popup z-[999999]">
               <div className="TopNavMenu-popup-content-wrapper">
                 <button className="TopNavMenu-logo">
                   <svg
@@ -75,7 +75,10 @@ const Header = () => {
                   </svg>
                 </button>
 
-                <div className="TopNavMenu-popup-item-wrapper">
+                <div
+                  data-aos="fade-up"
+                  className="TopNavMenu-popup-item-wrapper"
+                >
                   <div className="TopNavMenu-popup-item">
                     <a href="/clients/">Clients</a>
                   </div>
@@ -86,7 +89,10 @@ const Header = () => {
                     <a href="/about/">About</a>
                   </div>
                 </div>
-                <div className="TopNavMenu-popup-email-wrapper">
+                <div
+                  data-aos="fade-up"
+                  className="TopNavMenu-popup-email-wrapper"
+                >
                   <div className="TopNavMenu-popup-email-title">
                     Get in touch
                   </div>

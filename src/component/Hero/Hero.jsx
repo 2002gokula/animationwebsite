@@ -65,6 +65,7 @@ const Hero = () => {
   ]
 
   const [number, setNumber] = useState(0)
+  const [Playicon, setPlayIcon] = useState(true)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -80,8 +81,10 @@ const Hero = () => {
   const handleVideoClick = () => {
     if (videoRef.current.paused) {
       videoRef.current.play()
+      setPlayIcon(true)
     } else {
       videoRef.current.pause()
+      setPlayIcon(false)
     }
   }
 
@@ -125,10 +128,12 @@ const Hero = () => {
                   <div className="VideoHead-reel-overlay" />
                   <div
                     onClick={handleVideoClick}
-                    className="VideoHead-reel-innerPlay"
+                    className={`VideoHead-reel-innerPlay`}
                   >
                     <svg
-                      className="VideoHead-reel-innerPlay-light"
+                      className={`VideoHead-reel-innerPlay-light  ${
+                        Playicon ? "hidden" : ""
+                      }`}
                       viewBox="0 0 202 202"
                       version="1.1"
                       xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +171,9 @@ const Hero = () => {
                       </g>
                     </svg>
                     <svg
-                      className="VideoHead-reel-innerPlay-dark"
+                      className={`VideoHead-reel-innerPlay-dark  ${
+                        Playicon ? "hidden" : ""
+                      }`}
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       viewBox="0 0 97 97"
@@ -1867,7 +1874,7 @@ const Hero = () => {
               >
                 <div className="IndexAbout-inner">
                   <div className="IndexAbout-text-wrapper">
-                    <div>
+                    <div className="">
                       <p
                         data-aos="fade-up"
                         className="IndexAbout-text"
