@@ -32,45 +32,34 @@ const Header = () => {
             <div id="line-2" />
           </div>
           {MenuOpen && (
-            <div data-aos="zoom-in" className="TopNavMenu-popup z-[999999]">
+            <div data-aos="zoom-in" className="TopNavMenu-popup ">
               <div className="TopNavMenu-popup-content-wrapper">
                 <button className="TopNavMenu-logo">
                   <svg
-                    version="1.1"
-                    id="Layer_1"
+                    width={24}
+                    viewBox="0 0 24 24"
+                    fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    x="0px"
-                    y="0px"
-                    viewBox="0 0 102 39"
-                    style={{ enableBackground: "new 0 0 102 39" }}
-                    xmlSpace="preserve"
                   >
-                    <path
-                      className="logo-icon"
-                      d="M19.1,1C9.1,1,1,9.1,1,19.1s8.1,18.1,18.1,18.1V1z"
-                    />
-                    <g className="logo-text">
-                      <path
-                        className="logo-text-1"
-                        d="M42.6,26.2c-3.6,0-6-2.4-6-6.9V19c0-4.3,2.6-7.1,5.9-7.1c2.6,0,4.7,1.1,5.1,4h2.9c-0.6-4.7-4.2-6.4-8-6.4
-            c-4.9,0-9,3.8-9,9.4v0.3c0,5.7,3.9,9.4,9.1,9.4c4.1,0.2,7.7-2.8,8.1-6.9h-2.8C47.6,24.4,45.3,26.4,42.6,26.2z"
-                      />
-                      <rect
-                        className="logo-text-2"
-                        x="56.2"
-                        y="2.2"
-                        width={3}
-                        height="26.1"
-                      />
-                      <polygon
-                        className="logo-text-3"
-                        points="71,9.8 63.7,28.3 66.9,28.3 72.9,12.5 78.8,28.3 82.1,28.3 74.8,9.8  "
-                      />
-                      <polygon
-                        className="logo-text-4"
-                        points="97.9,9.8 92.4,24.4 86.7,9.8 83.6,9.8 90.8,27.8 87.5,35.9 90.5,35.9 101,9.8   "
-                      />
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {" "}
+                      <g id="Menu / Close_MD">
+                        {" "}
+                        <path
+                          id="Vector"
+                          d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18"
+                          stroke="#000000"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>{" "}
+                      </g>{" "}
                     </g>
                   </svg>
                 </button>

@@ -4586,7 +4586,10 @@
 }
 .IndexAbout-inner {
   position: relative;
-  margin: 0 auto;
+
+  /* margin: 0 auto; */
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (min-width: 1280px) {
   .IndexAbout-inner {
@@ -4626,6 +4629,7 @@
 }
 .IndexAbout-text-wrapper {
   color: #000;
+
   display: flex;
 }
 @media (max-width: 666px) {
@@ -12564,6 +12568,7 @@
 .TopNavMenu.open .TopNavMenu-popup {
   visibility: inherit;
   opacity: 1;
+  z-index: 99999;
   transform: none;
   transition: opacity 830ms cubic-bezier(0.19, 1, 0.22, 1),
     transform 830ms cubic-bezier(0.19, 1, 0.22, 1), visibility 830ms step-start;
@@ -13108,14 +13113,19 @@ html.dark-theme .TopNavMenu-popup {
 }
 .TopNavMenu-logo {
   position: absolute;
-  top: 32px;
-  left: -0.89189189em;
-  width: 2.75675676em;
-  height: 1.05405405em;
+  top: 12px;
+  border: none;
+  outline: none;
+  outline-style: none;
+  z-index: 99999;
+  /* left: -0.89189189em; */
+  right: 0;
+  width: 3.75675676em;
+  height: 3.05405405em;
   transition: 500ms opacity cubic-bezier(0.165, 0.84, 0.44, 1);
-  pointer-events: none;
   cursor: pointer;
-  display: none;
+  background-color: transparent;
+  /* display: none; */
 }
 @media (max-width: 666px) {
   .TopNavMenu-logo {
@@ -14473,4 +14483,34 @@ body {
   transform: scale(1, 0.99999999) translateZ(0);
   background: linear-gradient(to right, #cf3b70 0%, #b73995 100%);
   background-repeat: repeat-x;
+}
+
+.VideoHead-reel-innerPlay-light {
+  transition: all 0.6s ease;
+}
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
 }

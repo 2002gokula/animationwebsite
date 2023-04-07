@@ -127,11 +127,13 @@ const Hero = () => {
                   </video>
                   <div className="VideoHead-reel-overlay" />
                   <div
+                    data-aos="fade-up"
                     onClick={handleVideoClick}
                     className={`VideoHead-reel-innerPlay`}
                   >
                     <svg
-                      className={`VideoHead-reel-innerPlay-light  ${
+                      data-aos="fade-up"
+                      className={`VideoHead-reel-innerPlay-light animated animatedFadeInUp fadeInUp  ${
                         Playicon ? "hidden" : ""
                       }`}
                       viewBox="0 0 202 202"
@@ -169,33 +171,6 @@ const Hero = () => {
                           />
                         </g>
                       </g>
-                    </svg>
-                    <svg
-                      className={`VideoHead-reel-innerPlay-dark  ${
-                        Playicon ? "hidden" : ""
-                      }`}
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlnsXlink="http://www.w3.org/1999/xlink"
-                      viewBox="0 0 97 97"
-                    >
-                      <defs>
-                        <radialGradient id="playWhiteGradient">
-                          <stop
-                            offset="0%"
-                            className="VideoHead-reel-innerPlay-dark-gradientStart"
-                          />
-                          <stop
-                            offset="100%"
-                            className="VideoHead-reel-innerPlay-dark-gradientStop"
-                          />
-                        </radialGradient>
-                      </defs>
-                      <path
-                        d="M68.5,107A48.5,48.5,0,1,1,117,58.5,48.5,48.5,0,0,1,68.5,107ZM88,58.5,56.79,39V78Z"
-                        transform="translate(-20 -10)"
-                        fill="url(#playWhiteGradient)"
-                      />
-                      <polygon points="68.01 48.5 36.79 68.01 36.79 28.99 68.01 48.5" />
                     </svg>
                   </div>
                   <div
